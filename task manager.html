@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .task-input {
+            width: 300px;
+            padding: 10px;
+            margin-right: 10px;
+        }
+
+        .add-btn {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .add-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Task Manager</h1>
+
+    <input type="text" id="taskInput" class="task-input" placeholder="Enter your task">
+    <button class="add-btn" onclick="addTask()">Add Task</button>
+
+    <table id="taskTable">
+        <thead>
+            <tr>
+                <th>Task</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <script>
+        function addTask() {
+            var taskInput = document.getElementById('taskInput').value;
+
+            if (taskInput === "") {
+                alert("Please enter a task");
+                return;
+            }
+
+            var table = document.getElementById("taskTable").getElementsByTagName('tbody')[0];
+            var newRow = table.insertRow();
+            var cell = newRow.insertCell(0);
+            cell.innerHTML = taskInput;
+
+            document.getElementById('taskInput').value = "";
+        }
+    </script>
+
+</body>
+</html>
